@@ -1,39 +1,40 @@
-Employee Task Tracker
+# Employee Task Tracker
 
 A full-stack internal Employee Task Tracking System where admins can create and assign tasks, and employees can view and update their task progress.
 
 Built with .NET 8 Web API, Entity Framework Core, React (Vite + Tailwind CSS).
 
-Features
-Admin
+---
 
-Create employees
+## Features
 
-Create tasks
+### Admin
 
-Assign tasks to employees
+* Create employees
+* Create tasks
+* Assign tasks to employees
+* View all tasks
 
-View all tasks
+### Employee
 
-Employee
+* View assigned tasks
+* Update task status: Not Started ➞ In Progress ➞ Completed
+* Add comments to tasks (optional)
 
-View assigned tasks
+---
 
-Update task status: Not Started → In Progress → Completed
+## Tech Stack
 
-Add comments to tasks (optional)
+* Backend: .NET 8 Web API, Entity Framework Core
+* Database: SQL Server / SQLite
+* Frontend: React (Vite) + Tailwind CSS
+* HTTP Client: Axios
 
-Tech Stack
+---
 
-Backend: .NET 8 Web API, Entity Framework Core
+## Project Structure
 
-Database: SQL Server / SQLite
-
-Frontend: React (Vite) + Tailwind CSS
-
-HTTP Client: Axios
-
-Project Structure
+```
 Backend/
  ├─ Controllers/
  ├─ Models/
@@ -47,83 +48,85 @@ Frontend/
  │  ├─ pages/
  │  └─ main.tsx
  └─ index.html
+```
 
-Prerequisites
+---
 
-.NET 8 SDK
+## Prerequisites
 
-Node.js & npm
+* .NET 8 SDK
+* Node.js & npm
+* SQL Server or SQLite installed locally
 
-SQL Server or SQLite installed locally
+---
 
-Setup Instructions
-Backend
+## Setup Instructions
 
-Open the backend folder in terminal/IDE.
+### Backend
 
-Restore dependencies:
+1. Open the backend folder in terminal/IDE.
+2. Restore dependencies:
 
+```
 dotnet restore
+```
 
+3. Apply database migrations:
 
-Apply database migrations:
-
+```
 dotnet ef database update
+```
 
+4. Run the backend:
 
-Run the backend:
-
+```
 dotnet run
+```
 
+* API should now be running at `https://localhost:5001` (or configured port).
 
-API should now be running at https://localhost:5001 or similar.
+### Frontend
 
-Frontend
+1. Open the frontend folder in terminal.
+2. Install dependencies:
 
-Navigate to the frontend folder:
-
-cd EventTrackerApp
-
-
-Install dependencies:
-
+```
 npm install
+```
 
+3. Run the development server:
 
-Start the development server:
-
+```
 npm run dev
+```
 
+* Frontend should now be running at `http://localhost:5173` (or Vite’s assigned port).
 
-React app should now be running at http://localhost:5173 (or the port Vite shows).
+---
 
-Login Credentials
+## Usage
 
-Admin: Use the seeded admin account if provided, or create via backend.
+1. Open the app in your browser.
+2. Login as **Admin** or **Employee** using credentials seeded in the database (or create users if backend supports it).
+3. **Admin Dashboard:**
 
-Employee: Use the seeded employee accounts or create via Admin.
+   * Create tasks, assign employees, view all tasks.
+4. **Employee Dashboard:**
 
-Usage
+   * View assigned tasks, update status, add comments.
 
-Open frontend in browser.
+---
 
-Login as Admin or Employee.
+## Notes
 
-Admin can create tasks and assign them.
+* All API requests are made with **Axios** and support **cookie-based authentication**.
+* Tailwind CSS is used for styling. You can customize colors in `index.css`.
+* The project follows a **clean architecture** approach for backend.
 
-Employee can view their tasks, update status, and add comments.
+---
 
-API Endpoints
-Method	Endpoint	Description
-POST	/auth/login	Login user
-GET	/tasks	Get all tasks (Admin) / Assigned tasks (Employee)
-POST	/tasks	Create task (Admin only)
-PUT	/tasks/{id}/status	Update task status (Employee)
-POST	/tasks/{id}/comments	Add comment to task
-Notes
+## Troubleshooting
 
-Ensure backend is running before starting frontend.
-
-Cookies are used for authentication (no JWT).
-
-Tailwind CSS handles the frontend styling.
+* **CORS issues:** Ensure backend and frontend ports are configured properly.
+* **Database connection errors:** Check your `appsettings.json` for correct connection string.
+* **Port conflicts:** Change the ports in backend `launchSettings.json` or frontend `vite.config.ts`.
